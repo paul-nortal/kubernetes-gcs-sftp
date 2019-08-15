@@ -40,7 +40,7 @@ username:password:uid:gid:directory
 Where `uid` is a number (e.g. 1003) and `gid` is a number (e.g. 1003).
 And then add a new line into `etc/sftp.d/mount_user_directories.sh` to monunt their `directory` to a GCS bucket:
 ```
-runuser -l partner1 -c \
+runuser -l user1 -c \
 'export GOOGLE_APPLICATION_CREDENTIALS=/credentials/gcloud-key.json && \
 gcsfuse -o nonempty --only-dir username bucket /home/username/ftp'
 ```
@@ -51,9 +51,7 @@ This command will mount the bucket as the given user. It also does some environm
 ## Production Deployment
 To deploy to GKE follow these steps:
 
-### To Do
-- [ ] Push docker image to dockerhub
-- [ ] Document production deployment instructions
+
 
 ## Development Setup for Testing
 Follow these steps to run this locally with `minikube`.
@@ -96,11 +94,9 @@ minikube service sftp --url
 ```
 This will give you the IP and NodePort port.
 
-:information_source: We use NodePort 30022 for SFTP.
-
 ### 7. Confirm you can SFTP using the usernames and password you setup in `etc/sftp*` with `sftp` utility:
 ```
-$ sftp -P 30022 username@192.168.99.100
+$ sftp username@192.168.99.100
 username@192.168.99.100's password:
 sftp> pwd
 /directory

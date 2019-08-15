@@ -1,5 +1,5 @@
-FROM atmoz/sftp
-MAINTAINER Michael Ghen <mike@mikeghen.com>
+FROM atmoz/sftp 
+MAINTAINER Paul Henkin <paul.henkin@nortal.com>
 
 # Install FUSE so we can mount GCS buckets
 # Ref: https://github.com/GoogleCloudPlatform/gcsfuse/blob/master/docs/installing.md
